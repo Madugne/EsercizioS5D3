@@ -1,5 +1,6 @@
 package chunyin.EsercizioS5D3.exceptions;
 
+import chunyin.EsercizioS5D3.payloads.ErrorsResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -13,20 +14,20 @@ public class ExceptionsHandler {
 
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorPayload handleBadRequest(BadRequestException ex){
-        return new ErrorPayload(ex.getMessage(), LocalDate.now());
+    public ErrorsResponseDTO handleBadRequest(BadRequestException ex){
+        return new ErrorsResponseDTO(ex.getMessage(), LocalDateTime.now());
     }
 
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorPayload handleNotFound(NotFoundException ex){
-        return new ErrorPayload(ex.getMessage(), LocalDate.now());
+    public ErrorsResponseDTO handleNotFound(NotFoundException ex){
+        return new ErrorsResponseDTO(ex.getMessage(), LocalDateTime.now());
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
-    public ErrorPayload handleGenericErrors(Exception ex){
+    public ErrorsResponseDTO handleGenericErrors(Exception ex){
         ex.printStackTrace();
-        return new ErrorPayload("Errore interno server", LocalDate.now());
+        return new ErrorsResponseDTO("Errore interno server", LocalDateTime.now());
     }
 }
