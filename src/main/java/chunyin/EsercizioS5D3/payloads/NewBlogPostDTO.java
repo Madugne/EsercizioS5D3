@@ -1,6 +1,6 @@
 package chunyin.EsercizioS5D3.payloads;
 
-import jakarta.validation.constraints.Email;
+import chunyin.EsercizioS5D3.entities.Author;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
@@ -17,6 +17,8 @@ public record NewBlogPostDTO(
         @Size(min = 3, max = 100, message = "Il contenuto ha un minimo di 3 e un massimo di 100 caratteri")
         String content,
         @NotEmpty(message = "Il tempo di lettura è obbligatorio")
-        double readingTime
+        double readingTime,
+        @NotEmpty
+        Author author
 ) {
 }
