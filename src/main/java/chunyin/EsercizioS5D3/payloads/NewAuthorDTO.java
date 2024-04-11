@@ -20,6 +20,5 @@ public record NewAuthorDTO(
         @Size(min = 4, message = "La password deve avere come minimo 8 caratteri")
         String password,
         @NotEmpty(message = "La data di nascita è obbligatoria")
-        LocalDate birthday
-) {
+        LocalDate birthday) {
 }
